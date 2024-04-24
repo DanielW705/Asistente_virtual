@@ -35,7 +35,16 @@ namespace Asistente_virtual
                         {
                             case string s when s.Contains("hola") || s.Contains("buenos días") || s.Contains("buenas"):
                                 {
-                                    speecher.Speak("Hola usuario, en que le puedo ayudar");
+                                    DateTime horaActual = DateTime.Now;
+
+                                    speecher.Speak($"{(horaActual.TimeOfDay >= new TimeSpan(6, 0, 0) &&
+                                        horaActual.TimeOfDay < new TimeSpan(12, 0, 0) ?
+                                        "Buenos dias " :
+                                        horaActual.TimeOfDay >= new TimeSpan(12, 0, 0)
+                                        && horaActual.TimeOfDay < new TimeSpan(18, 0, 0) ?
+                                        "Buenas tardes " :
+                                        "Buenas noches"
+                                        )} usuario, en que le puedo ayudar");
                                     break;
                                 }
                             case string s when s.Contains("edad") && (s.Contains("dame") || s.Contains("tienes")):

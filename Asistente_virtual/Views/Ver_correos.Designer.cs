@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             txtbxMails = new TextBox();
+            PushNotification = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // txtbxMails
@@ -40,6 +42,11 @@
             txtbxMails.ScrollBars = ScrollBars.Vertical;
             txtbxMails.Size = new Size(800, 450);
             txtbxMails.TabIndex = 0;
+            // 
+            // PushNotification
+            // 
+            PushNotification.Interval = 60000;
+            PushNotification.Tick += PushNotification_Tick;
             // 
             // Ver_correos
             // 
@@ -62,5 +69,6 @@
         #endregion
 
         private TextBox txtbxMails;
+        private System.Windows.Forms.Timer PushNotification;
     }
 }
